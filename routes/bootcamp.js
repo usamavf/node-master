@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { protect, authorize } = require('../middleware/auth');
 const Bootcamps = require('../controllers/bootcamps');
 const advancedResults = require('../middleware/advancedResults');
 
@@ -7,17 +8,17 @@ const BootcampModel = require('../models/Bootcamp');
 
 router
     .route('/:id/photo')
-    .put(Bootcamps.bootcampPhotoUpload);
+    .put(protect, authorize('publisher', 'admin'), Bootcamps.bootcampPhotoUpload);
 
 router
     .route('/')
-    .get(advancedResults(BootcampModel), Bootcamps.getBootcamps)
+    .get(protect, advancedResults(BootcampModel), Bootcamps.getBootcamps)
     .post(Bootcamps.createBootcamp)
 
 
 router
     .route('/:id')
-    .get(Bootcamps.getBootcamp);
+    .get(protect, Bootcamps.getBootcamp);
 
 
 

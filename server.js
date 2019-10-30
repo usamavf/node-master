@@ -5,6 +5,7 @@ const path = require('path');
 const fileupload = require('express-fileupload');
 const errorhandler = require('./middleware/error');
 const connectDB = require('./config/db');
+const cookieParser = require('cookie-parser');
 
 // route files
 const bootcamp = require('./routes/bootcamp');
@@ -20,6 +21,9 @@ const app = express();
 
 // Body parser
 app.use(express.json());
+
+// cookie parser
+app.use(cookieParser());
 
 app.use(morgan('dev'));
 
