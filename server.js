@@ -9,7 +9,6 @@ const cookieParser = require('cookie-parser');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const xss = require('xss-clean');
-const hpp = require('hpp');
 const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 
@@ -55,9 +54,6 @@ const limiter = rateLimit({
 });
 
 app.use(limiter);
-
-// prevent http parameter pollution
-//app.use(hpp);
 
 // enable cors
 app.use(cors());
