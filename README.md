@@ -1,4 +1,4 @@
-# node-master
+# node-master (nodejs, express, mongo)
 
 # instructions to run
 
